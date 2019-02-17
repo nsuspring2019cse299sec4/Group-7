@@ -1,6 +1,8 @@
 # Group-7
 
-1610786042	Md. Shafiqul Islam	md.shafiqul@northsouth.edu
+Project Idea: Pizza Ordering App
+
+Members:
 
 1620044042	Md. Golam Rabby Shuvo	golam.shuvo@northsouth.edu
 
