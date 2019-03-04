@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                dialog.setMessage("Loging in please wait...");
+                dialog.setMessage("Logging in. Please wait...");
                 dialog.setIndeterminate(true);
                 dialog.show();
 
@@ -54,16 +54,22 @@ public class MainActivity extends AppCompatActivity {
                             dialog.dismiss();
                             User user = dataSnapshot.child(Phone.getText().toString()).getValue(User.class);
                             if (user.getPassword().equals(Password.getText().toString())) {
-                                Toast.makeText(MainActivity.this, "Sign in successfully !", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Signed in successfully !", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                startActivity(intent);
                             } else {
                                 Toast.makeText(MainActivity.this, "Wrong password !", Toast.LENGTH_SHORT).show();
+                                Phone.getText().clear();
+                                Password.getText().clear();
                             }
                         } else {
                             dialog.dismiss();
-                            Toast.makeText(MainActivity.this, "Phone number does not exists !", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Phone number does not exist !", Toast.LENGTH_SHORT).show();
+                            Phone.getText().clear();
+                            Password.getText().clear();
                         }
-                        Phone.getText().clear();
-                        Password.getText().clear();
+
                     }
 
                     @Override
@@ -77,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
 
             }
         });
