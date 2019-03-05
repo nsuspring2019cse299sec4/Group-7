@@ -10,8 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pizzaorder.common.Common;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseError;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,10 +30,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_main);
+
         LogInButton = (Button) findViewById(R.id.login);
         RegisterButton = (Button) findViewById(R.id.register);
         Phone = (EditText) findViewById(R.id.phone);
         Password = (EditText) findViewById(R.id.password);
+
         final ProgressDialog dialog = new ProgressDialog(this);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -41,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                dialog.setMessage("Logging in. Please wait...");
+                dialog.setMessage("Loging in please wait...");
                 dialog.setIndeterminate(true);
                 dialog.show();
 
@@ -54,10 +58,12 @@ public class MainActivity extends AppCompatActivity {
                             dialog.dismiss();
                             User user = dataSnapshot.child(Phone.getText().toString()).getValue(User.class);
                             if (user.getPassword().equals(Password.getText().toString())) {
-                                Toast.makeText(MainActivity.this, "Signed in successfully !", Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                Common.currentUser = user;
                                 startActivity(intent);
+                                finish();
+
                             } else {
                                 Toast.makeText(MainActivity.this, "Wrong password !", Toast.LENGTH_SHORT).show();
                                 Phone.getText().clear();
@@ -65,11 +71,10 @@ public class MainActivity extends AppCompatActivity {
                             }
                         } else {
                             dialog.dismiss();
-                            Toast.makeText(MainActivity.this, "Phone number does not exist !", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Phone number does not exists !", Toast.LENGTH_SHORT).show();
                             Phone.getText().clear();
                             Password.getText().clear();
                         }
-
                     }
 
                     @Override
@@ -83,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
 
             }
         });
