@@ -33,6 +33,28 @@
             android:text="@string/total"
             android:textSize="18sp" />
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:gravity="center"
+            android:layout_gravity="bottom">
+
+            <Button
+                android:id="@+id/newPizza"
+                android:layout_width="130dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="Add New Pizza" />
+
+            <Button
+                android:id="@+id/checkout"
+                android:layout_width="130dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="Checkout" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
