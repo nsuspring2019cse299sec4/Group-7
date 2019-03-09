@@ -4,4 +4,10 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="how_to_title">How To Order</string>
+    <string name="how_to_text">Following this message you will be given the option of your pizza
+        size, crust, and toppings.  If at any time you need help, press the menu button and select help,
+        for hints on how to use the current screen.</string>
+    <string name="empty">Your shopping cart is currently empty!</string>
+    <string name="total">Current Total: 0.00 BDT</string>
 </resources>
