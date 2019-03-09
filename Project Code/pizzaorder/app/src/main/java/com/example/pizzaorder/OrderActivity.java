@@ -80,4 +80,21 @@ public class OrderActivity extends ListActivity implements View.OnClickListener{
                     }
                 }).show();
     }
+
+    public void openSizeSelectionDialog() {
+        new AlertDialog.Builder(this).setTitle(R.string.pizza_size).setItems(R.array.pizza_size, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String size;
+                if (which == 0)
+                    size = "Small";
+                else if (which == 1)
+                    size = "Medium";
+                else
+                    size = "Large";
+                openCrustSelectionDialog(size);
+            }
+        }).show();
+    }
 }
