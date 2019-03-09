@@ -3,6 +3,7 @@ package com.example.pizzaorder;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -96,5 +97,28 @@ public class OrderActivity extends ListActivity implements View.OnClickListener{
                 openCrustSelectionDialog(size);
             }
         }).show();
+    }
+
+    public void openCrustSelectionDialog(final String size) {
+        new AlertDialog.Builder(this).setTitle(R.string.crust_selection).setItems(R.array.pizza_crust, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String crust;
+                if (which == 0)
+                    crust = "Thin";
+                else if (which == 1)
+                    crust = "Thick";
+                else if (which == 2)
+                    crust = "Deep";
+                else
+                    crust = "Stuffed";
+
+            }
+        }).show();
+    }
+
+    public void checkOutDialog() {
+
     }
 }
