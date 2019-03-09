@@ -69,4 +69,15 @@ public class OrderActivity extends ListActivity implements View.OnClickListener{
         }
 
     }
+
+    public void openHowToDialog() {
+        new AlertDialog.Builder(this).setTitle(R.string.how_to_title).setMessage(R.string.how_to_text).setCancelable(false)
+                .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        openSizeSelectionDialog();
+                    }
+                }).show();
+    }
 }
