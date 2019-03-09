@@ -11,4 +11,11 @@
     <string name="empty">Your shopping cart is currently empty!</string>
     <string name="total">Current Total: 0.00 BDT</string>
     <string name="pizza_size">Pizza Size</string>
+    <string name="thin_label">Thin - 80BDT</string>
+    <string name="thick_label">Thick - 50BDT</string>
+    <string name="deep_label">Deep - 80BDT</string>
+    <string name="stuffed_label">Stuffed - 50Tk</string>
+    <string name="small_label">Small - 200BDT</string>
+    <string name="medium_label">Medium - 400BDT</string>
+    <string name="large_label">Large - 600BDT</string>
 </resources>
