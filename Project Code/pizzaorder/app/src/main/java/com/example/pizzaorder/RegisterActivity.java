@@ -52,10 +52,9 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        User user = new User(Address.getText().toString(), Block.getText().toString(), House.getText().toString(), Name.getText().toString(), Password.getText().toString(), Road.getText().toString());
                         if (dataSnapshot.child(Phone.getText().toString()).exists()) {
-                            dialog.dismiss();
 
+                            dialog.dismiss();
                             Phone.getText().clear();
                             Name.getText().clear();
                             Address.getText().clear();
@@ -66,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         else {
                             dialog.dismiss();
+                            User user = new User(Address.getText().toString(), Block.getText().toString(), House.getText().toString(), Name.getText().toString(), Password.getText().toString(), Road.getText().toString());
                             myRef.child(Phone.getText().toString()).setValue(user);
                             Toast.makeText(RegisterActivity.this, "Successful !", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);

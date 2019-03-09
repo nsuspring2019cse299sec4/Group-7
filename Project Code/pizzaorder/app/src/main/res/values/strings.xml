@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">pizzaorder</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="empty">Your shopping cart is currently empty!</string>
+    <string name="total">Current Total: 0.00 BDT</string>
 </resources>
