@@ -85,5 +85,16 @@ public class ProfileEditActivity extends AppCompatActivity {
                 });
             }
         });
+
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(ProfileEditActivity.this, ProfileActivity.class);
+                intent.putExtra("userPhone", urPhone);
+                startActivity(intent);
+
+            }
+        });
     }
 }

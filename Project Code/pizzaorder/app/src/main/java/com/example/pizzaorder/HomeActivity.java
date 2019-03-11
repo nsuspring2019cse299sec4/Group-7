@@ -29,6 +29,8 @@ public class HomeActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("user");
 
+        final String uPhone = getIntent().getStringExtra("userPhone");
+
         ProfileButton = (Button) findViewById(R.id.profile);
         LogOutButton = (Button) findViewById(R.id.logout);
         OrderButton = (Button) findViewById(R.id.order);
@@ -40,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick (View view){
 
                 Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                intent.putExtra("userPhone", uPhone);
                 startActivity(intent);
             }
         });
@@ -49,6 +52,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick (View view){
 
                 Intent intent = new Intent(HomeActivity.this, OrderActivity.class);
+                intent.putExtra("userPhone", uPhone);
                 startActivity(intent);
             }
         });
