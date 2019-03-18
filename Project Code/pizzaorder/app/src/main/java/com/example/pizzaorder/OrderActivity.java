@@ -114,6 +114,12 @@ public class OrderActivity extends ListActivity implements View.OnClickListener{
                 else
                     crust = "Stuffed";
 
+                String sz = size;
+                Intent intent = new Intent(OrderActivity.this, NewPizzaActivity.class);
+                intent.putExtra("Size", sz);
+                intent.putExtra("Crust", crust);
+                startActivity(intent);
+
             }
         }).show();
     }
