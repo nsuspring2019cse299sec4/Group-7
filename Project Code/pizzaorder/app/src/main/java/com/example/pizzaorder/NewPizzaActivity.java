@@ -53,6 +53,7 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
         AddToCartButton.setOnClickListener(this);
         View CancelButton = findViewById(R.id.cancel_button);
         CancelButton.setOnClickListener(this);
+
     }
 
     @Override
