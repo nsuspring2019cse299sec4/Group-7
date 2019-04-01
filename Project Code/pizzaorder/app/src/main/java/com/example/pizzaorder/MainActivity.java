@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                             if (user.getPassword().equals(Password.getText().toString())) {
 
                                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                intent.putExtra("userPhone", Phone.getText().toString());
                                 Common.currentUser = user;
                                 startActivity(intent);
                                 finish();

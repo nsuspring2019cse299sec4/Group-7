@@ -29,6 +29,8 @@ public class ProfileActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("user");
 
+        final String usPhone = getIntent().getStringExtra("userPhone");
+
         EditButton = (Button) findViewById(R.id.edit);
         BackButton = (Button) findViewById(R.id.back);
         Name = (TextView) findViewById(R.id.name);
@@ -49,6 +51,10 @@ public class ProfileActivity extends AppCompatActivity {
 
             public void onClick (View view){
 
+                Intent intent = new Intent(ProfileActivity.this, ProfileEditActivity.class);
+                intent.putExtra("userPhone",  usPhone);
+                startActivity(intent);
+
             }
         });
 
@@ -57,6 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick (View view){
 
                 Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+                intent.putExtra("userPhone", usPhone);
                 startActivity(intent);
             }
         });
