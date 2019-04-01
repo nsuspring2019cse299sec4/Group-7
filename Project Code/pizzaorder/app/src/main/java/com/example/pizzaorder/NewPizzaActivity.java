@@ -84,7 +84,17 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
         updatePizza(toppingsWhole, toppingsLeft, toppingsRight);
     }
 
-    private String editString(ArrayList<String> wList) {
+    private String editString(ArrayList<String> list) {
+        String toppings = "";
+        String withOutComma;
+        for (String item : list) {
+            toppings += item + ", ";
+        }
+        if (toppings.equals(""))
+            withOutComma = "";
+        else
+            withOutComma = toppings.substring(0, toppings.length() - 2);
+        return withOutComma;
     }
 
     private void updatePizza(String toppingsWhole, String toppingsLeft, String toppingsRight) {
