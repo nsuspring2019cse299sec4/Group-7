@@ -11,6 +11,24 @@ public class ImageAdapter extends BaseAdapter {
     int mGalleryItemBackground;
     private Context mContext;
 
+    private Integer[] mImageIds = {
+            R.drawable.anchovies,
+            R.drawable.bacon,
+            R.drawable.bananapepper,
+            R.drawable.blackolives,
+            R.drawable.chicken,
+            R.drawable.greenpeppers,
+            R.drawable.ham,
+            R.drawable.jalapenopeppers,
+            R.drawable.mozzarella,
+            R.drawable.mushrooms,
+            R.drawable.onion,
+            R.drawable.pepperoni,
+            R.drawable.pineapple,
+            R.drawable.sausage,
+            R.drawable.tomatoes,
+    };
+
     public ImageAdapter(Context c) {
 
     }
