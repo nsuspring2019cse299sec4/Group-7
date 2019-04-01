@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.Gallery;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -46,6 +47,74 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
                     lList.clear();
                 if (rList.isEmpty())
                     rList.clear();
+                if (wholeRadio.isChecked()) { // Whole Pizza
+                    if (wList.contains(topingList.get(position))) {
+                        displayMessage(position, " removed");
+                        wList.remove(wList.indexOf(topingList.get(position)));
+                        if (wList.isEmpty())
+                            wholeText.setText("");
+                        else
+                            wholeText.setText(editString(wList));
+                    } else if (rList.contains(topingList.get(position))) {
+                        rList.remove(rList.indexOf(topingList.get(position)));
+                        wList.add(topingList.get(position));
+                        rightText.setText(editString(rList));
+                        wholeText.setText(editString(wList));
+                        displayMessage(position, " added");
+                    } else if (lList.contains(topingList.get(position))) {
+                        lList.remove(lList.indexOf(topingList.get(position)));
+                        wList.add(topingList.get(position));
+                        leftText.setText(editString(lList));
+                        wholeText.setText(editString(wList));
+                        displayMessage(position, " added");
+                    } else {
+                        displayMessage(position, " added");
+                        wList.add(topingList.get(position));
+                        wholeText.setText(editString(wList));
+                    }
+                } else if (leftRadio.isChecked()) { // Left side of pizza.
+                    if (lList.contains(topingList.get(position))) {
+                        displayMessage(position, " removed");
+                        lList.remove(lList.indexOf(topingList.get(position)));
+                        if (lList.isEmpty())
+                            leftText.setText("");
+                        else
+                            leftText.setText(editString(lList));
+                    } else if (rList.contains(topingList.get(position))) { // Checking if the same topping is on the right side of pizza.
+                        displayMessage(position, " added to whole pizza");
+                        rList.remove(rList.indexOf(topingList.get(position)));
+                        rightText.setText(editString(rList));
+                        wList.add(topingList.get(position));
+                        wholeText.setText(editString(wList));
+                    } else if (wList.contains(topingList.get(position))) {
+                        displayMessage(position, " have already been added to the whole pizza");
+                    } else {
+                        displayMessage(position, " added");
+                        lList.add(topingList.get(position));
+                        leftText.setText(editString(lList));
+                    }
+                } else { // Right side of pizza.
+                    if (rList.contains(topingList.get(position))) {
+                        displayMessage(position, " removed");
+                        rList.remove(rList.indexOf(topingList.get(position)));
+                        if (rList.isEmpty())
+                            rightText.setText("");
+                        else
+                            rightText.setText(editString(rList));
+                    } else if (lList.contains(topingList.get(position))) { // Checking if the same topping is on the left side of pizza.
+                        displayMessage(position, " added to whole pizza");
+                        lList.remove(lList.indexOf(topingList.get(position)));
+                        leftText.setText(editString(lList));
+                        wList.add(topingList.get(position));
+                        wholeText.setText(editString(wList));
+                    } else if (wList.contains(topingList.get(position))) {
+                        displayMessage(position, " have already been added to the whole pizza");
+                    } else {
+                        displayMessage(position, " added");
+                        rList.add(topingList.get(position));
+                        rightText.setText(editString(rList));
+                    }
+                }
                 }
         });
 
@@ -54,6 +123,10 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
         View CancelButton = findViewById(R.id.cancel_button);
         CancelButton.setOnClickListener(this);
 
+    }
+
+    private void displayMessage(int position, String message) {
+        Toast.makeText(NewPizzaActivity.this, topingList.get(position) + message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
