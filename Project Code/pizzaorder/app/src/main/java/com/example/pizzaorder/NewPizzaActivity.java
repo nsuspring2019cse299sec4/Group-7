@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Gallery;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -32,6 +34,21 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
         wholeText = (TextView) findViewById(R.id.whole_text);
         leftText = (TextView) findViewById(R.id.left_text);
         rightText = (TextView) findViewById(R.id.right_text);
+
+        Gallery gallery = (Gallery) findViewById(R.id.gallery);
+        gallery.setAdapter(new ImageAdapter(this));
+
+        gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @SuppressWarnings("rawtypes")
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
+                if (wList.isEmpty())
+                    wList.clear();
+                if (lList.isEmpty())
+                    lList.clear();
+                if (rList.isEmpty())
+                    rList.clear();
+                }
+        });
     }
 
     @Override
