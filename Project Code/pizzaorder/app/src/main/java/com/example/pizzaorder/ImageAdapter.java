@@ -5,6 +5,8 @@ import android.content.res.TypedArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Gallery;
+import android.widget.ImageView;
 
 public class ImageAdapter extends BaseAdapter {
 
@@ -37,7 +39,9 @@ public class ImageAdapter extends BaseAdapter {
         a.recycle();
     }
 
-    public int getCount() { return mImageIds.length; }
+    public int getCount() {
+        return mImageIds.length;
+    }
 
     public Object getItem(int position) {
         return position;
@@ -47,8 +51,14 @@ public class ImageAdapter extends BaseAdapter {
         return position;
     }
 
-    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        ImageView i = new ImageView(mContext);
+
+        i.setImageResource(mImageIds[position]);
+        i.setLayoutParams(new Gallery.LayoutParams(400, 400));
+        i.setScaleType(ImageView.ScaleType.FIT_XY);
+        i.setBackgroundResource(mGalleryItemBackground);
+
+        return i;
     }
 }
