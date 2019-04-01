@@ -1,6 +1,7 @@
 package com.example.pizzaorder;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static com.example.pizzaorder.PizzaData.TOPPINGS_LEFT;
+import static com.example.pizzaorder.PizzaData.TOPPINGS_RIGHT;
+import static com.example.pizzaorder.PizzaData.TOPPINGS_WHOLE;
 
 public class NewPizzaActivity extends Activity implements View.OnClickListener {
 
@@ -128,6 +133,24 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
         Toast.makeText(NewPizzaActivity.this, topingList.get(position) + message, Toast.LENGTH_SHORT).show();
     }
 
+    private void createToppingList() {
+        topingList.add("Anchovies");
+        topingList.add("Bacon");
+        topingList.add("Banana Peppers");
+        topingList.add("Black Olives");
+        topingList.add("Chicken");
+        topingList.add("Green Peppers");
+        topingList.add("Ham");
+        topingList.add("Jalapeno Peppers");
+        topingList.add("Extra Cheese");
+        topingList.add("Mushrooms");
+        topingList.add("Onion");
+        topingList.add("Pepperoni");
+        topingList.add("Pineapple");
+        topingList.add("Sausage");
+        topingList.add("Roma Tomatoes");
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -171,8 +194,12 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
     }
 
     private void updatePizza(String toppingsWhole, String toppingsLeft, String toppingsRight) {
-
+        ContentValues values = new ContentValues();
+        values.put(TOPPINGS_WHOLE, toppingsWhole);
+        values.put(TOPPINGS_LEFT, toppingsLeft);
+        values.put(TOPPINGS_RIGHT, toppingsRight);
     }
+
 }
 
 
