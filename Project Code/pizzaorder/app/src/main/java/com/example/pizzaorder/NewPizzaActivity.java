@@ -2,6 +2,7 @@ package com.example.pizzaorder;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -198,6 +199,18 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
         values.put(TOPPINGS_WHOLE, toppingsWhole);
         values.put(TOPPINGS_LEFT, toppingsLeft);
         values.put(TOPPINGS_RIGHT, toppingsRight);
+    }
+
+    private Cursor getPizza() {
+        Cursor cursor = null;
+        startManagingCursor(cursor);
+        return cursor;
+    }
+
+    private void setArrayList(ArrayList<String> list, String[] toppings) {
+        for (int i = 0; i < toppings.length; i++) {
+            list.add(toppings[i].trim());
+        }
     }
 
 }
