@@ -30,7 +30,11 @@ public class ImageAdapter extends BaseAdapter {
     };
 
     public ImageAdapter(Context c) {
-
+        mContext = c;
+        TypedArray a = c.obtainStyledAttributes(R.styleable.HelloGallery);
+        mGalleryItemBackground = a.getResourceId(
+                R.styleable.HelloGallery_android_galleryItemBackground, 0);
+        a.recycle();
     }
 
     @Override
