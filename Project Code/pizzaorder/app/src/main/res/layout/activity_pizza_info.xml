@@ -155,4 +155,26 @@
             </LinearLayout>
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/pay"
+                android:layout_width="130dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="Payment" />
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="130dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="cancel" />
+        </LinearLayout>
+</LinearLayout>
 </LinearLayout>
