@@ -80,5 +80,29 @@
                     android:textColor="#666666"
                     android:textSize="14sp" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+                <TextView
+                    android:text="Whole Half: "
+                    android:orientation="vertical"
+                    android:textSize="10sp"
+                    android:textColor="#008B45"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/whole"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:textColor="#008B45"
+                    android:textSize="10sp" />
+            </LinearLayout>
     </LinearLayout>
 </LinearLayout>
