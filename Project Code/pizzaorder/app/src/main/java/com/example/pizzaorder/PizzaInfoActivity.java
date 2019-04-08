@@ -29,6 +29,12 @@ public class PizzaInfoActivity extends Activity implements OnClickListener {
         Whole = (TextView) findViewById(R.id.whole);
         Left = (TextView) findViewById(R.id.left);
         Right = (TextView) findViewById(R.id.right);
+
+        Size.setText(ppsize);
+        Crust.setText(ppcrust);
+        Whole.setText(ppwhole);
+        Left.setText(ppleft);
+        Right.setText(ppright);
     }
 
     @Override
