@@ -168,6 +168,15 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
                 if (rList.size() > 0) {
                     toppingsRight = toppingsRight + editString(rList);
                 }
+                final String size = getIntent().getStringExtra("Size");
+                final String crust = getIntent().getStringExtra("Crust");
+                Intent intent = new Intent(NewPizzaActivity.this, PizzaInfoActivity.class);
+                intent.putExtra("pSize", size);
+                intent.putExtra("pCrust", crust);
+                intent.putExtra("pWhole", toppingsWhole);
+                intent.putExtra("pLeft", toppingsLeft);
+                intent.putExtra("pRight", toppingsRight);
+                startActivity(intent);
                 finish();
                 break;
             case R.id.cancel_button:
