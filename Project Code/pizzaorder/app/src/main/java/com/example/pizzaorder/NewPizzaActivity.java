@@ -156,29 +156,24 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.add_to_cart_button:
-                addToCart();
+                String toppingsWhole = "";
+                String toppingsLeft = "";
+                String toppingsRight = "";
+                if (wList.size() > 0) {
+                    toppingsWhole = toppingsWhole + editString(wList);
+                }
+                if (lList.size() > 0) {
+                    toppingsLeft = toppingsLeft + editString(lList);
+                }
+                if (rList.size() > 0) {
+                    toppingsRight = toppingsRight + editString(rList);
+                }
                 finish();
                 break;
             case R.id.cancel_button:
                 finish();
                 break;
         }
-    }
-
-    private void addToCart() {
-        String toppingsWhole = "";
-        String toppingsLeft = "";
-        String toppingsRight = "";
-        if (wList.size() > 0) {
-            toppingsWhole = toppingsWhole + editString(wList);
-        }
-        if (lList.size() > 0) {
-            toppingsLeft = toppingsLeft + editString(lList);
-        }
-        if (rList.size() > 0) {
-            toppingsRight = toppingsRight + editString(rList);
-        }
-        updatePizza(toppingsWhole, toppingsLeft, toppingsRight);
     }
 
     private String editString(ArrayList<String> list) {
@@ -192,13 +187,6 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
         else
             withOutComma = toppings.substring(0, toppings.length() - 2);
         return withOutComma;
-    }
-
-    private void updatePizza(String toppingsWhole, String toppingsLeft, String toppingsRight) {
-        ContentValues values = new ContentValues();
-        values.put(TOPPINGS_WHOLE, toppingsWhole);
-        values.put(TOPPINGS_LEFT, toppingsLeft);
-        values.put(TOPPINGS_RIGHT, toppingsRight);
     }
 
     private Cursor getPizza() {
