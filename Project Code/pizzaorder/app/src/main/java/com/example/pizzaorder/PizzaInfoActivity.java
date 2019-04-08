@@ -16,9 +16,14 @@ public class PizzaInfoActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pizza_info);
+        final String ppsize = getIntent().getStringExtra("pSize");
+        final String ppcrust = getIntent().getStringExtra("pCrust");
+        final String ppwhole = getIntent().getStringExtra("pWhole");
+        final String ppleft = getIntent().getStringExtra("pLeft");
+        final String ppright = getIntent().getStringExtra("pRight");
+        
         PayButton = (Button) findViewById(R.id.pay);
         BackButton = (Button) findViewById(R.id.cancel);
-
         Size = (TextView) findViewById(R.id.size);
         Crust = (TextView) findViewById(R.id.crust);
         Whole = (TextView) findViewById(R.id.whole);
