@@ -1,23 +1,38 @@
 package com.example.pizzaorder;
 
+
+import static android.provider.BaseColumns._ID;
+import static com.example.pizzaorder.PizzaData.SIZE;
+import static com.example.pizzaorder.PizzaData.TABLE_NAME;
+import static com.example.pizzaorder.PizzaData.TOPPINGS_LEFT;
+import static com.example.pizzaorder.PizzaData.TOPPINGS_RIGHT;
+import static com.example.pizzaorder.PizzaData.TOPPINGS_WHOLE;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Gallery;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.pizzaorder.R;
 
-import static com.example.pizzaorder.PizzaData.TOPPINGS_LEFT;
-import static com.example.pizzaorder.PizzaData.TOPPINGS_RIGHT;
-import static com.example.pizzaorder.PizzaData.TOPPINGS_WHOLE;
-
-public class NewPizzaActivity extends Activity implements View.OnClickListener {
+public class NewPizzaActivity extends Activity implements OnClickListener {
 
     public RadioButton wholeRadio;
     public RadioButton leftRadio;
@@ -29,10 +44,17 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
     public ArrayList<String> lList = new ArrayList<String>();
     public ArrayList<String> rList = new ArrayList<String>();
     public ArrayList<String> topingList = new ArrayList<String>();
+    int id = 999;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_pizza);
+        createToppingList();
+
+        Bundle bundle = this.getIntent().getExtras();
+        if (bundle != null && bundle.size() > 0)
+            id = bundle.getInt(_ID);
 
         wholeRadio = (RadioButton) findViewById(R.id.whole);
         leftRadio = (RadioButton) findViewById(R.id.left);
@@ -41,10 +63,11 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
         leftText = (TextView) findViewById(R.id.left_text);
         rightText = (TextView) findViewById(R.id.right_text);
 
+
         Gallery gallery = (Gallery) findViewById(R.id.gallery);
         gallery.setAdapter(new ImageAdapter(this));
 
-        gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gallery.setOnItemClickListener(new OnItemClickListener() {
             @SuppressWarnings("rawtypes")
             public void onItemClick(AdapterView parent, View v, int position, long id) {
                 if (wList.isEmpty())
@@ -121,35 +144,14 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
                         rightText.setText(editString(rList));
                     }
                 }
-                }
+            }
+
         });
 
         View AddToCartButton = findViewById(R.id.add_to_cart_button);
         AddToCartButton.setOnClickListener(this);
         View CancelButton = findViewById(R.id.cancel_button);
         CancelButton.setOnClickListener(this);
-    }
-
-    private void displayMessage(int position, String message) {
-        Toast.makeText(NewPizzaActivity.this, topingList.get(position) + message, Toast.LENGTH_SHORT).show();
-    }
-
-    private void createToppingList() {
-        topingList.add("Anchovies");
-        topingList.add("Bacon");
-        topingList.add("Banana Peppers");
-        topingList.add("Black Olives");
-        topingList.add("Chicken");
-        topingList.add("Green Peppers");
-        topingList.add("Ham");
-        topingList.add("Jalapeno Peppers");
-        topingList.add("Extra Cheese");
-        topingList.add("Mushrooms");
-        topingList.add("Onion");
-        topingList.add("Pepperoni");
-        topingList.add("Pineapple");
-        topingList.add("Sausage");
-        topingList.add("Roma Tomatoes");
     }
 
     @Override
@@ -170,22 +172,48 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
                 }
                 final String size = getIntent().getStringExtra("Size");
                 final String crust = getIntent().getStringExtra("Crust");
+                final String phone = getIntent().getStringExtra("Phone");
                 Intent intent = new Intent(NewPizzaActivity.this, PizzaInfoActivity.class);
                 intent.putExtra("pSize", size);
                 intent.putExtra("pCrust", crust);
                 intent.putExtra("pWhole", toppingsWhole);
                 intent.putExtra("pLeft", toppingsLeft);
                 intent.putExtra("pRight", toppingsRight);
+                intent.putExtra("uPhone", phone);
                 startActivity(intent);
-                finish();
                 break;
             case R.id.cancel_button:
+                Intent intent1 = new Intent(NewPizzaActivity.this, OrderActivity.class);
+                startActivity(intent1);
                 finish();
                 break;
         }
+
     }
 
-    private String editString(ArrayList<String> list) {
+    private void createToppingList() {
+        topingList.add("Anchovies");
+        topingList.add("Bacon");
+        topingList.add("Banana Peppers");
+        topingList.add("Black Olives");
+        topingList.add("Chicken");
+        topingList.add("Green Peppers");
+        topingList.add("Ham");
+        topingList.add("Jalapeno Peppers");
+        topingList.add("Extra Cheese");
+        topingList.add("Mushrooms");
+        topingList.add("Onion");
+        topingList.add("Pepperoni");
+        topingList.add("Pineapple");
+        topingList.add("Sausage");
+        topingList.add("Roma Tomatoes");
+    }
+
+    private void displayMessage(int position, String message) {
+        Toast.makeText(NewPizzaActivity.this, topingList.get(position) + message, Toast.LENGTH_SHORT).show();
+    }
+
+    private String editString(List<String> list) {
         String toppings = "";
         String withOutComma;
         for (String item : list) {
@@ -198,12 +226,6 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
         return withOutComma;
     }
 
-    private Cursor getPizza() {
-        Cursor cursor = null;
-        startManagingCursor(cursor);
-        return cursor;
-    }
-
     private void setArrayList(ArrayList<String> list, String[] toppings) {
         for (int i = 0; i < toppings.length; i++) {
             list.add(toppings[i].trim());
@@ -211,5 +233,3 @@ public class NewPizzaActivity extends Activity implements View.OnClickListener {
     }
 
 }
-
-
