@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Your selection for the pizza..."
+            android:text="Summary..."
             android:textSize="20sp"/>
 
         <LinearLayout
@@ -129,7 +129,6 @@
                     android:textColor="#008B45"
                     android:textSize="24sp" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -156,7 +155,7 @@
                     android:textSize="24sp" />
             </LinearLayout>
             <TextView
-                android:id="@+id/stotal"
+                android:id="@+id/total"
                 android:orientation="vertical"
                 android:textSize="32sp"
                 android:textColor="#008B45"
@@ -164,6 +163,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+                <TextView
+                    android:text="Phone: "
+                    android:orientation="vertical"
+                    android:textSize="18sp"
+                    android:textColor="#008B45"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/cphone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:textColor="#008B45"
+                    android:textSize="24sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+                <TextView
+                    android:text="Payment: "
+                    android:orientation="vertical"
+                    android:textSize="18sp"
+                    android:textColor="#008B45"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:textColor="#008B45"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -175,14 +224,14 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/payM"
+                android:id="@+id/confirm"
                 android:layout_width="130dip"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:text="Pay" />
+                android:text="Confirm" />
 
             <Button
-                android:id="@+id/cancel"
+                android:id="@+id/back"
                 android:layout_width="130dip"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -190,4 +239,5 @@
         </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+
+    </LinearLayout>
