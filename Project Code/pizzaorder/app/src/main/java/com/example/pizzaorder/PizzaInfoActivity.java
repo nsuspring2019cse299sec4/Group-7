@@ -20,7 +20,7 @@ public class PizzaInfoActivity extends Activity {
 
     TextView Size, Crust, Whole, Left, Right, Total;
     Button PayButton, BackButton;
-    static String ppsize, ppcrust, ppwhole, ppleft, ppright, uuphone;
+    static String ppsize, ppcrust, ppwhole, ppleft, ppright, uuphone, paym;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,6 @@ public class PizzaInfoActivity extends Activity {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PizzaInfoActivity.this);
                 alertDialogBuilder.setTitle("Select Payment Method").setItems(R.array.payment, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        String paym;
                         if(which == 0)
                             bkashTxnDialog();
                         else {
@@ -82,39 +81,47 @@ public class PizzaInfoActivity extends Activity {
                 }).show();
 
             }
+
+            private void bkashTxnDialog() {
+                LayoutInflater li = LayoutInflater.from(PizzaInfoActivity.this);
+                View promptsView = li.inflate(R.layout.prompts, null);
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PizzaInfoActivity.this);
+
+                alertDialogBuilder.setView(promptsView);
+
+                final EditText userInput = (EditText) promptsView
+                        .findViewById(R.id.editText);
+
+                alertDialogBuilder.setCancelable(false);
+                alertDialogBuilder.setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                paym = "Bkash TxnId: " + userInput.getText().toString();
+                                Intent intent = new Intent(PizzaInfoActivity.this, ConfirmActivity.class);
+                                intent.putExtra("Size", ppsize);
+                                intent.putExtra("Crust", ppcrust);
+                                intent.putExtra("Whole", ppwhole);
+                                intent.putExtra("Left", ppleft);
+                                intent.putExtra("Right", ppright);
+                                intent.putExtra("Phone", uuphone);
+                                intent.putExtra("Payment", paym);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+                alertDialogBuilder.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                alertDialog.show();
+            }
         });
-
-    }
-
-    private void bkashTxnDialog() {
-
-        LayoutInflater li = LayoutInflater.from(this);
-        View promptsView = li.inflate(R.layout.prompts, null);
-
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-        alertDialogBuilder.setView(promptsView);
-
-        final EditText userInput = (EditText) promptsView
-                .findViewById(R.id.editText);
-
-        alertDialogBuilder.setCancelable(false);
-        alertDialogBuilder.setPositiveButton("OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Editable payment = userInput.getText();
-                    }
-                });
-        alertDialogBuilder.setNegativeButton("Cancel",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-
-        alertDialog.show();
 
     }
 }
