@@ -41,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
         Block = (TextView) findViewById(R.id.block);
 
         Name.setText(Common.currentUser.getName());
-        Phone.setText(Common.currentUser.toString());
+        Phone.setText(usPhone);
         Address.setText(Common.currentUser.getAddress());
         House.setText(Common.currentUser.getHouse());
         Road.setText(Common.currentUser.getRoad());
