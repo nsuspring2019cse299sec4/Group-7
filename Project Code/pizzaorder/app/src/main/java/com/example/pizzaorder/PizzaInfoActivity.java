@@ -56,6 +56,36 @@ public class PizzaInfoActivity extends Activity {
         else if(ppsize.equals("Large"))
             temp = "800Tk";
         Total.setText("Total amount: " + temp);
+        PayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PizzaInfoActivity.this);
+                alertDialogBuilder.setTitle("Select Payment Method").setItems(R.array.payment, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String paym;
+                        if(which == 0)
+                            bkashTxnDialog();
+                        else {
+                            paym = "Cash On Delivery";
+                            Intent intent = new Intent(PizzaInfoActivity.this, ConfirmActivity.class);
+                            intent.putExtra("Size", ppsize);
+                            intent.putExtra("Crust", ppcrust);
+                            intent.putExtra("Whole", ppwhole);
+                            intent.putExtra("Left", ppleft);
+                            intent.putExtra("Right", ppright);
+                            intent.putExtra("Phone", uuphone);
+                            intent.putExtra("Payment", paym);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                }).show();
+
+            }
+        });
     }
-    
+
+    private void bkashTxnDialog() {
+    }
+
 }
