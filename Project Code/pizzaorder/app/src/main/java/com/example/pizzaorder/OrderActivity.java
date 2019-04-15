@@ -15,6 +15,7 @@ public class OrderActivity extends ListActivity implements View.OnClickListener{
 
     public boolean hasShown = false;
     public TextView Total;
+    static String usPhone;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -22,6 +23,8 @@ public class OrderActivity extends ListActivity implements View.OnClickListener{
         setContentView(R.layout.activity_order);
         getListView().setChoiceMode(1);
 
+
+        usPhone = getIntent().getStringExtra("userPhone");
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             public void onNothingSelected(AdapterView arg0) {
@@ -118,6 +121,7 @@ public class OrderActivity extends ListActivity implements View.OnClickListener{
                 Intent intent = new Intent(OrderActivity.this, NewPizzaActivity.class);
                 intent.putExtra("Size", sz);
                 intent.putExtra("Crust", crust);
+                intent.putExtra("Phone", usPhone);
                 startActivity(intent);
 
             }
