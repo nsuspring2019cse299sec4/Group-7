@@ -21,7 +21,7 @@ public class PizzaInfoActivity extends Activity implements OnClickListener {
         final String ppwhole = getIntent().getStringExtra("pWhole");
         final String ppleft = getIntent().getStringExtra("pLeft");
         final String ppright = getIntent().getStringExtra("pRight");
-        
+
         PayButton = (Button) findViewById(R.id.pay);
         BackButton = (Button) findViewById(R.id.cancel);
         Size = (TextView) findViewById(R.id.size);
