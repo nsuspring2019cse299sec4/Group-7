@@ -17,7 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="You have Selected..." />
+            android:text="Your selection for the pizza..."
+            android:textSize="20sp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -38,7 +39,7 @@
                     android:layout_weight="1"
                     android:gravity="left"
                     android:text="Size: "
-                    android:textSize="14sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:singleLine="true"
                     android:ellipsize="end"
@@ -54,13 +55,13 @@
                     android:orientation="vertical"
                     android:singleLine="false"
                     android:textColor="#666666"
-                    android:textSize="14sp" />
+                    android:textSize="24sp" />
                 <TextView
                     android:id="@+id/postTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="14sp"
+                    android:textSize="18sp"
                     android:gravity="left"
                     android:text="Crust: "
                     android:textStyle="bold"
@@ -78,7 +79,7 @@
                     android:orientation="vertical"
                     android:singleLine="false"
                     android:textColor="#666666"
-                    android:textSize="14sp" />
+                    android:textSize="24sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -89,7 +90,7 @@
                 <TextView
                     android:text="Whole Half: "
                     android:orientation="vertical"
-                    android:textSize="10sp"
+                    android:textSize="18sp"
                     android:textColor="#008B45"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
@@ -102,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:textColor="#008B45"
-                    android:textSize="10sp" />
+                    android:textSize="24sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -113,7 +114,7 @@
                 <TextView
                     android:text="Left Half: "
                     android:orientation="vertical"
-                    android:textSize="10sp"
+                    android:textSize="18sp"
                     android:textColor="#008B45"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
@@ -126,8 +127,9 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:textColor="#008B45"
-                    android:textSize="10sp" />
+                    android:textSize="24sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -142,7 +144,7 @@
                     android:singleLine="true"
                     android:text="Right Half: "
                     android:textColor="#008B45"
-                    android:textSize="10sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -151,10 +153,20 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:textColor="#008B45"
-                    android:textSize="10sp" />
+                    android:textSize="24sp" />
             </LinearLayout>
+            <TextView
+                android:id="@+id/stotal"
+                android:orientation="vertical"
+                android:textSize="32sp"
+                android:textColor="#008B45"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -163,11 +175,11 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/pay"
+                android:id="@+id/payM"
                 android:layout_width="130dip"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:text="Payment" />
+                android:text="Pay" />
 
             <Button
                 android:id="@+id/cancel"
@@ -176,5 +188,6 @@
                 android:layout_gravity="bottom"
                 android:text="cancel" />
         </LinearLayout>
-</LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>
