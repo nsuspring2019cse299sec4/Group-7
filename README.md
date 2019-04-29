@@ -6,9 +6,9 @@
 
 **Github Repositary Link:** https://github.com/nsuspring2019cse299sec4/Group-7 
 
-**Slack Channel Link:** https://trello.com/b/n3syGBYh/pizza-ordering-app-project
+**Trello Board Link:** https://trello.com/b/n3syGBYh/pizza-ordering-app-project
 
-**Trello Board Link:** https://fall19cse299s4g7.slack.com/
+**Slack Channel Link:** https://fall19cse299s4g7.slack.com/
 
 **Members:**
 
